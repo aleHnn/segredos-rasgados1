@@ -1,38 +1,25 @@
 const SENHA = "anjo";
 
-function entrar(){
+const mensagens = {
+    "pecado": "O PERDÃO ESTÁ AQUI.",
+    "confissao": "MARCADO ATÉ A MORTE.",
+    "arquivo": "VOCÊ NÃO DEVERIA TER ENTRADO.",
+    "serafim": "O JULGAMENTO COMEÇOU."
+};
 
-    const senha = document.getElementById("senha").value.toLowerCase();
+function entrar() {
+
+    const senha = document.getElementById("senha").value.toLowerCase().trim();
 
     const mensagem = document.getElementById("mensagemSecreta");
+    const erro = document.getElementById("erro");
 
-    // A senha principal continua levando à revelação
-    if(senha === "anjo"){
-
-        // aqui fica o seu código atual da revelação
-        revelar();
-
-        return;
-    }
-
-    // Senhas especiais
-    if(mensagens[senha]){
-
-        mensagem.innerHTML = mensagens[senha];
-        mensagem.classList.add("mostrar");
-
-        return;
-    }
-
-    // Senha incorreta
     mensagem.innerHTML = "";
     mensagem.classList.remove("mostrar");
 
-    document.getElementById("erro").innerHTML = "Senha incorreta.";
+    erro.innerHTML = "";
 
-}
-
-};
+    // SENHA PRINCIPAL
     if (senha === SENHA) {
 
         document.getElementById("login").classList.add("fade");
@@ -41,9 +28,7 @@ function entrar(){
 
             document.getElementById("login").style.display = "none";
 
-            const tela = document.getElementById("revelacao");
-
-            tela.style.display = "flex";
+            document.getElementById("revelacao").style.display = "flex";
 
             const img = document.getElementById("imagem");
 
@@ -58,23 +43,31 @@ function entrar(){
 
         },1200);
 
+        return;
     }
 
-    else{
+    // SENHAS SECRETAS
+    if (mensagens[senha]) {
 
-        erro.innerHTML = "Senha incorreta.";
+        escreverMensagem(mensagens[senha]);
 
-        document.getElementById("senha").animate([
-            {transform:"translateX(-8px)"},
-            {transform:"translateX(8px)"},
-            {transform:"translateX(-8px)"},
-            {transform:"translateX(8px)"},
-            {transform:"translateX(0px)"}
-        ],{
-            duration:400
-        });
+        return;
 
     }
+
+    // SENHA ERRADA
+
+    erro.innerHTML = "Senha incorreta.";
+
+    document.getElementById("senha").animate([
+        {transform:"translateX(-8px)"},
+        {transform:"translateX(8px)"},
+        {transform:"translateX(-8px)"},
+        {transform:"translateX(8px)"},
+        {transform:"translateX(0px)"}
+    ],{
+        duration:400
+    });
 
 }
 
@@ -82,11 +75,11 @@ function escreverTexto(){
 
     const texto = "A justiça está chegando.";
 
-    let i = 0;
-
     const destino = document.getElementById("texto");
 
     destino.innerHTML = "";
+
+    let i = 0;
 
     const intervalo = setInterval(()=>{
 
@@ -104,6 +97,32 @@ function escreverTexto(){
 
 }
 
+function escreverMensagem(frase){
+
+    const destino = document.getElementById("mensagemSecreta");
+
+    destino.innerHTML = "";
+
+    destino.classList.add("mostrar");
+
+    let i = 0;
+
+    const intervalo = setInterval(()=>{
+
+        destino.innerHTML += frase.charAt(i);
+
+        i++;
+
+        if(i >= frase.length){
+
+            clearInterval(intervalo);
+
+        }
+
+    },40);
+
+}
+
 document.getElementById("senha").addEventListener("keydown",function(e){
 
     if(e.key==="Enter"){
@@ -113,10 +132,3 @@ document.getElementById("senha").addEventListener("keydown",function(e){
     }
 
 });
-
-const mensagens = {
-    "pecado": "O PERDÃO ESTA AQUI.",
-
-    "confissao": "MARCADO ATE A MORTE.",
-
-};
