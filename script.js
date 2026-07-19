@@ -8,7 +8,11 @@ const mensagens = {
     "justica": "AZRAEL",
     "justiça": "AZRAEL",
     "segredos": "A JUSTICA VIRA",
-    "morte": "JUIZO FINAL",
+    "morte: "JUIZO FINAL",
+    "31082000: "fgnpl cntbh crybf frhf crpnqbf",
+    "31/08/2000: "fgnpl cntbh crybf frhf crpnqbf",
+    "stacy: "profana",
+
 };
 
 function entrar() {
@@ -143,3 +147,24 @@ ddocument.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+function verificarSenha(){
+
+    let senha = document.getElementById("senha").value;
+    let imagem = document.getElementById("imagemSecreta");
+    let mensagem = document.getElementById("mensagem");
+
+
+    if(senha === "31/08/2000"){
+
+        imagem.classList.add("aparecer");
+
+        mensagem.innerHTML = "tudo tem um preço";
+
+    } else {
+
+        mensagem.innerHTML = "Senha incorreta.";
+
+    }
+
+}
