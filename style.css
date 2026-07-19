@@ -8,7 +8,7 @@ body{
 
     font-family:'Cinzel',serif;
 
-    background:url("assets/corredor.png");
+    background-image: url("corredor.png");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
