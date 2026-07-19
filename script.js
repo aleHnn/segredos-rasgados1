@@ -3,15 +3,22 @@ const SENHA = "anjo";
 const mensagens = {
     "pecado": "O PERDÃO ESTÁ AQUI.",
     "confissao": "MARCADO ATÉ A MORTE.",
+    "confissão": "MARCADO ATÉ A MORTE.",
     "mentira": "O JULGAMENTO COMEÇOU.",
     "justica": "AZRAEL",
+    "justiça": "AZRAEL",
     "segredos": "A JUSTICA VIRA",
     "morte": "JUIZO FINAL",
 };
 
 function entrar() {
 
-    const senha = document.getElementById("senha").value.toLowerCase().trim();
+const senha = document.getElementById("senha")
+.value
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g, "")
+.trim();
 
     const mensagem = document.getElementById("mensagemSecreta");
     const erro = document.getElementById("erro");
@@ -125,12 +132,14 @@ function escreverMensagem(frase){
 
 }
 
-document.getElementById("senha").addEventListener("keydown",function(e){
+ddocument.addEventListener("DOMContentLoaded", () => {
 
-    if(e.key==="Enter"){
+    document.getElementById("senha").addEventListener("keydown", function(e){
 
-        entrar();
+        if(e.key === "Enter"){
+            entrar();
+        }
 
-    }
+    });
 
 });
