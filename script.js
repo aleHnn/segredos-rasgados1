@@ -1,10 +1,38 @@
 const SENHA = "anjo";
 
-function entrar() {
+function entrar(){
 
-    const senha = document.getElementById("senha").value;
-    const erro = document.getElementById("erro");
+    const senha = document.getElementById("senha").value.toLowerCase();
 
+    const mensagem = document.getElementById("mensagemSecreta");
+
+    // A senha principal continua levando à revelação
+    if(senha === "anjo"){
+
+        // aqui fica o seu código atual da revelação
+        revelar();
+
+        return;
+    }
+
+    // Senhas especiais
+    if(mensagens[senha]){
+
+        mensagem.innerHTML = mensagens[senha];
+        mensagem.classList.add("mostrar");
+
+        return;
+    }
+
+    // Senha incorreta
+    mensagem.innerHTML = "";
+    mensagem.classList.remove("mostrar");
+
+    document.getElementById("erro").innerHTML = "Senha incorreta.";
+
+}
+
+};
     if (senha === SENHA) {
 
         document.getElementById("login").classList.add("fade");
@@ -85,3 +113,10 @@ document.getElementById("senha").addEventListener("keydown",function(e){
     }
 
 });
+
+const mensagens = {
+    "pecado": "O PERDÃO ESTA AQUI.",
+
+    "confissao": "MARCADO ATE A MORTE.",
+
+};

@@ -287,3 +287,18 @@ button:hover{
     }
 
 }
+
+#mensagemSecreta{
+    margin-top:25px;
+    color:#b30000;
+    font-size:18px;
+    letter-spacing:2px;
+    min-height:30px;
+    text-align:center;
+    opacity:0;
+    transition:0.5s;
+}
+
+#mensagemSecreta.mostrar{
+    opacity:1;
+}
