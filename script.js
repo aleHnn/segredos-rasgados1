@@ -3,8 +3,10 @@ const SENHA = "anjo";
 const mensagens = {
     "pecado": "O PERDÃO ESTÁ AQUI.",
     "confissao": "MARCADO ATÉ A MORTE.",
-    "arquivo": "VOCÊ NÃO DEVERIA TER ENTRADO.",
-    "serafim": "O JULGAMENTO COMEÇOU."
+    "mentira": "O JULGAMENTO COMEÇOU.",
+    "justica": "AZRAEL",
+    "segredos": "A JUSTICA VIRA",
+    "morte": "JUIZO FINAL",
 };
 
 function entrar() {
